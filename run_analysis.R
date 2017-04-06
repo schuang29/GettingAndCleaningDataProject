@@ -1,47 +1,57 @@
 
-#download the file
+# Sourcing the Data
+## Ccreate a folder to hold source data (if it doesn't already exist)
 if(!file.exists("./Course3Week4Assign1")){dir.create("./Course3Week4Assign1")}
+
+## Define the source and download the file
 fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 download.file(fileUrl, destfile = "./Course3Week4Assign1/Course3Week4Assign1.zip", mode = "wb")
 
-#unzip the file
+# Inspecting the data
+## Unzip the file
 unzip("./Course3Week4Assign1/Course3Week4Assign1.zip", exdir = "./Course3Week4Assign1")
     
-#get list of files unzipped
+## Get list of files unzipped
 path_rf <- file.path("./Course3Week4Assign1" , "UCI HAR Dataset")
-path_rf
 files<-list.files(path_rf, recursive=TRUE)
-files
 
-#1. Merges the training and the test sets to create one data set.
+# Merge the training and the test sets to create one data
+# There are three types of data sets, and we merge each respectively
+# 1. Activity Files - 'Y' prefix files
+# 2. Subject Files - 'subject' prefix files
+# 3. Feature files - 'X' prefix files
 
-#Read the Activity files
+## Read the Activity files
 dataActivityTest  <- read.table(file.path(path_rf, "test" , "Y_test.txt" ),header = FALSE)
 dataActivityTrain <- read.table(file.path(path_rf, "train", "Y_train.txt"),header = FALSE)
+
 View(dataActivityTest)
 View(dataActivityTrain)
 
-#Read the Subject files
+## Read the Subject files
 dataSubjectTrain <- read.table(file.path(path_rf, "train", "subject_train.txt"),header = FALSE)
 dataSubjectTest  <- read.table(file.path(path_rf, "test" , "subject_test.txt"),header = FALSE)
+
 View(dataSubjectTrain)
 View(dataSubjectTest)
 
-#Read Features files
+## Read Features files
 dataFeaturesTest  <- read.table(file.path(path_rf, "test" , "X_test.txt" ),header = FALSE)
-View(dataFeaturesTest)
 dataFeaturesTrain <- read.table(file.path(path_rf, "train", "X_train.txt"),header = FALSE)
+
+View(dataFeaturesTest)
 View(dataFeaturesTrain)
 
-#Merge datasets
+## Merge datasets all into one
 dataActivity <- rbind(dataActivityTest, dataActivityTrain)
 dataSubject <- rbind(dataSubjectTest, dataSubjectTrain)
 dataFeatures <- rbind(dataFeaturesTest, dataFeaturesTrain)
+
 View(dataActivity)
 View(dataSubject)
 View(dataFeatures)
 
-#Name the cols
+## Name the columns in each dataset
 names(dataSubject)<-c("subject")
 names(dataActivity)<- c("activity")
 dataFeaturesNames <- read.table(file.path(path_rf, "features.txt"),head=FALSE)
