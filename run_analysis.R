@@ -1,3 +1,4 @@
+setwd("D:/GitHub/GettingAndCleaningDataProject")
 
 # Sourcing the Data
 ## Create a folder to hold source data (if it doesn't already exist)
@@ -8,11 +9,11 @@ fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%2
 download.file(fileUrl, destfile = "./Course3Week4Assign1/Course3Week4Assign1.zip", mode = "wb")
 
 ## Unzip the file
-unzip("./Course3Week4Assign1/Course3Week4Assign1.zip", exdir = "./Course3Week4Assign1")
+#unzip("./Course3Week4Assign1/Course3Week4Assign1.zip", exdir = "./Course3Week4Assign1")
 
 # Inspecting the data
 ## Get list of files unzipped
-# path_rf <- file.path("./Course3Week4Assign1" , "UCI HAR Dataset")
+path_rf <- file.path("./Course3Week4Assign1" , "UCI HAR Dataset")
 # files<-list.files(path_rf, recursive=TRUE)
 
 # Merge the training and the test sets to create one data
@@ -65,7 +66,6 @@ names(dataFeatures)<- dataFeaturesNames$V2
 #Combine the subject, activity, and feature data
 dataCombine <- cbind(dataSubject, dataActivity)
 Data <- cbind(dataFeatures, dataCombine)
-dataTbl <- tbl_df(Data)
 
 #Uncomment out to inspect the tables
 # View(dataCombine)

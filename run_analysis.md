@@ -25,7 +25,7 @@ unzip("./Course3Week4Assign1/Course3Week4Assign1.zip", exdir = "./Course3Week4As
 ```
 
 ## Inspect the data
-For your reference only
+Define path to get to the data files we're interested in
 ```R
 path_rf <- file.path("./Course3Week4Assign1" , "UCI HAR Dataset")
 files<-list.files(path_rf, recursive=TRUE)
@@ -72,7 +72,6 @@ The approach is to merge two first, and then merge the result with the last data
 ```R
 dataCombine <- cbind(dataSubject, dataActivity)
 Data <- cbind(dataFeatures, dataCombine)
-dataTbl <- tbl_df(Data)
 ```
 
 ## Create a working dataset that has only the Average and Standard Deviation columns
