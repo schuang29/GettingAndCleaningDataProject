@@ -36,6 +36,6 @@ You should create one R script called run_analysis.R that does the following.
 * Tidy dataset file `tidydata.txt`
 
 ### Reproducing the Project
-1. Open the R script `run_analysis.R` using your favorite IDE or text editor
-2. Change your workding directory to be where R script is saved, and save
-3. Run the script
+1. Review the [Codebook](https://github.com/schuang29/GettingAndCleaningDataProject/blob/master/CodeBook.md)
+2. Review the [run_analysis.R markdown](https://github.com/schuang29/GettingAndCleaningDataProject/blob/master/run_analysis.md)
+3. Run the [run_analysis.R](https://github.com/schuang29/GettingAndCleaningDataProject/blob/master/run_analysis.R) script. Be sure to update the working directory before running.
