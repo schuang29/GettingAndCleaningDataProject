@@ -117,6 +117,15 @@ relabeledData <- arrange(relabeledData, subject, activity)
 * magnitude
 * body
 
+```R
+names(relabeledData)<-gsub("^t", "time", names(relabeledData))
+names(relabeledData)<-gsub("^f", "frequency", names(relabeledData))
+names(relabeledData)<-gsub("Acc", "Accelerometer", names(relabeledData))
+names(relabeledData)<-gsub("Gyro", "Gyroscope", names(relabeledData))
+names(relabeledData)<-gsub("Mag", "Magnitude", names(relabeledData))
+names(relabeledData)<-gsub("BodyBody", "Body", names(relabeledData))
+```
+
 ## Create tidy dataset that is the average of averages and std
 Summarize by subject and activity
 ```R
